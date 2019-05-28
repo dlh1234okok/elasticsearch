@@ -1,5 +1,6 @@
 package com.dlh.springbootes.delay;
 
+import com.dlh.springbootes.my.queue.DelayGetWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -15,15 +16,12 @@ import java.util.concurrent.Delayed;
 @Component
 public class DelayedConsumer{
 
-    @Autowired
-    private DelayQueue<Delayed> delayQueue;
 
     @Async
-    public void consumer(BaseMethodCallback baseMethodCallback) {
-        while (true) {
+    public void consumer(DelayGetWith delayGetWith) {
+        for (;;){
             try {
-                // System.out.println(delayQueue.take());
-                baseMethodCallback.onMethodDo();
+                delayGetWith.callback();
             } catch (Exception e) {
                 e.printStackTrace();
             }

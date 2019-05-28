@@ -40,4 +40,8 @@ public class DelayedQueueConfig implements Delayed {
                 ", msg='" + msg + '\'' +
                 '}';
     }
+
+    public String getMsg() {
+        return msg;
+    }
 }
