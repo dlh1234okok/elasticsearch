@@ -22,7 +22,7 @@ public class BeanFactory {
         return queue;
     }
 
-    @Bean
+    /*@Bean
     public ThreadPoolTaskExecutor threadPoolTaskExecutor() {
         ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
         threadPoolTaskExecutor.setMaxPoolSize(10);
@@ -31,7 +31,7 @@ public class BeanFactory {
         threadPoolTaskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         threadPoolTaskExecutor.setWaitForTasksToCompleteOnShutdown(true);
         return threadPoolTaskExecutor;
-    }
+    }*/
 
 
 }

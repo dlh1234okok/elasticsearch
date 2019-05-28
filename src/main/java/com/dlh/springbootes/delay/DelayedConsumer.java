@@ -14,14 +14,15 @@ import java.util.concurrent.Delayed;
  * @date: 2019/5/28 14:03
  */
 @Component
-public class DelayedConsumer{
+public class DelayedConsumer {
 
 
     @Async
     public void consumer(DelayGetWith delayGetWith) {
-        for (;;){
+        for (; ; ) {
             try {
                 delayGetWith.callback();
+                System.out.println("消费时间:" + System.currentTimeMillis());
             } catch (Exception e) {
                 e.printStackTrace();
             }

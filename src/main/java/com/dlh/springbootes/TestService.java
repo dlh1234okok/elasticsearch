@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.DelayQueue;
 import java.util.concurrent.Delayed;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author: dulihong
@@ -17,14 +18,18 @@ import java.util.concurrent.Delayed;
 public class TestService {
 
     @Autowired
-    private DelayQueue<Delayed> delayQueue;
-    @Autowired
     private DelayedConsumer delayedConsumer;
     @Autowired
     private DelayGetWithImpl delayGetWith;
 
+    private AtomicInteger atomicInteger = new AtomicInteger(0);
+
     public void test() {
-        delayQueue.put(new DelayedQueueConfig(System.currentTimeMillis() + 10000,"哈哈哈"));
+        int num = atomicInteger.get();
+        atomicInteger.set(num + 1);
+        long time = System.currentTimeMillis();
+        System.out.println("发布时间:" + time);
+        delayGetWith.put(100000, "哈哈哈");
         System.out.println("put ok...");
         delayedConsumer.consumer(() -> delayGetWith.callback());
     }
